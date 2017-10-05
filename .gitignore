@@ -3,6 +3,7 @@ node_modules/
 typings/
 .env
 npm-debug.log
+package-lock.json
 
 src/*.js
 src/*.js.map

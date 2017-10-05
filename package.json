@@ -5,10 +5,11 @@
   "main": "app.js",
   "scripts": {
     "start": "concurrently \"npm run build\" \"npm run server\"",
-    "dev": "concurrently -c \"yellow,green,blue\" \"build/ts:watch\" \"npm run build/js:bundle\" \"npm run server\"",
+    "dev": "concurrently -c \"yellow,green,blue,white\" \"npm run build/ts:watch\" \"npm run build/js:bundle\" \"npm run watch\" \"npm run server\"",
     "build/ts": "tsc",
     "build/ts:watch": "tsc -w",
     "build/js:bundle": "rollup -c",
+    "watch": "onchange 'src/**/*.js' -- npm run build/js:bundle",
     "server": "live-server --open=./src",
     "test": "npm t"
   },
@@ -27,6 +28,7 @@
   "homepage": "https://github.com/matteobarone/git-docs#readme",
   "devDependencies": {
     "concurrently": "^3.5.0",
+    "onchange": "^3.2.1",
     "rollup": "^0.50.0",
     "rollup-plugin-commonjs": "^8.2.1",
     "rollup-plugin-node-resolve": "^3.0.0"
