@@ -8,7 +8,7 @@ const extractCSS = new ExtractTextPlugin({
 });
 
 module.exports = {
-    entry: './src/app.ts',
+    entry: './src/app/app.ts',
     resolve: {
         extensions: [ ".tsx", ".ts", ".js" ]
     },
@@ -18,10 +18,6 @@ module.exports = {
     },
     module: {
         rules: [{
-            test: /\.spec?$/,
-            use: 'ts-loader',
-            exclude: /node_modules/
-        },{
             test: /\.html$/,
             use: [{
                 loader: 'html-loader',
@@ -33,6 +29,10 @@ module.exports = {
                 fallback: 'style-loader',
                 use: ['css-loader?url=false', 'postcss-loader', 'sass-loader'],
             })
+        },{
+            test: /\.spec?$/,
+            use: 'ts-loader',
+            exclude: /node_modules/
         },{
             test: /\.js$/,
             use: [
