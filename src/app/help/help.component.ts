@@ -10,7 +10,7 @@ export class HelpComponent implements IHelpComponent {
     }
   }
   
-  destroy(element: Element) {
+  onDestroy(element: Element) {
     if (element) {
       element.outerHTML = '';
     }

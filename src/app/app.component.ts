@@ -8,12 +8,12 @@ export class AppComponent {
     this.onInit(element);
   }
   
-  public onInit(element: Element): void {
+  private onInit(element: Element): void {
     this.render(element);
-    this.afterViewRender();
+    this.onAfterViewRender();
   }
   
-  private afterViewRender(): void {
+  private onAfterViewRender(): void {
     this.isViewOpen = false;
     this.helpBtn = document.querySelector('#help-btn');
     this.helpBtn.addEventListener('click', () => this.toggleViewHelp());
@@ -22,7 +22,7 @@ export class AppComponent {
   private toggleViewHelp(): void {
     !this.isViewOpen
       ? this.helpComponent.render(document.querySelector('main'))
-      : this.helpComponent.destroy(document.querySelector('help'));
+      : this.helpComponent.onDestroy(document.querySelector('help'));
     this.isViewOpen = !this.isViewOpen;
   }
   
