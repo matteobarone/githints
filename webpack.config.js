@@ -7,8 +7,13 @@ const extractCSS = new ExtractTextPlugin({
     allChunks: true,
 });
 
+const babelOptions = {
+  "presets": ["es2015"]
+};
+
 module.exports = {
-    entry: './src/app/app.ts',
+    cache: true,
+    entry: './src/app/app.bootstrap.ts',
     resolve: {
         extensions: [ ".tsx", ".ts", ".js" ]
     },
@@ -30,15 +35,26 @@ module.exports = {
                 use: ['css-loader?url=false', 'postcss-loader', 'sass-loader'],
             })
         },{
-            test: /\.spec?$/,
-            use: 'ts-loader',
-            exclude: /node_modules/
-        },{
-            test: /\.js$/,
-            use: [
-                {loader: 'ng-annotate-loader?single_quotes'},
-                {loader: 'babel-loader'}
-            ]
+          test: /\.ts(x?)$/,
+          exclude: /node_modules/,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: babelOptions
+            },
+            {
+              loader: 'ts-loader'
+            }
+          ]
+        }, {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: babelOptions
+            }
+          ]
         }]
     },
     plugins: [
