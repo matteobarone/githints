@@ -1,12 +1,11 @@
 import {IHelpComponent} from "./help.interface";
-import './help.scss';
+import {template} from "./help.template";
 
 export class HelpComponent implements IHelpComponent {
   render(element: Element) {
-    if (!document.querySelector('help')) {
-      element.innerHTML = `
-        <help>Ciao sono la Help page</help>
-      `;
+    if (!element) {
+      const mainEl = document.querySelector('main');
+      mainEl.innerHTML = template;
     }
   }
   
