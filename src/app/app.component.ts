@@ -7,7 +7,7 @@ export class AppComponent {
   private helpBtn: Element;
   private helpEl: Element;
   private docsEl: Element;
-  private isViewOpen: boolean;
+  private isHelpOpen: boolean;
   
   constructor(
     private element: Element,
@@ -27,10 +27,10 @@ export class AppComponent {
   }
   
   private onAfterViewRender(): void {
-    this.isViewOpen = false;
+    this.isHelpOpen = false;
     this.helpBtn = document.querySelector('#help-btn');
     this.helpBtn.addEventListener('click', () => {
-      this.isViewOpen = this.appController.toggleViewHelp(this.isViewOpen, this.helpComponent, this.docsComponent, this.docsEl, this.helpEl);
+      this.isHelpOpen = this.appController.toggleViewHelp(this.isHelpOpen, this.helpComponent, this.docsComponent, this.docsEl, this.helpEl);
     });
   }
   
