@@ -16,21 +16,27 @@ export class Hello extends React.Component<HelloProps, HelloState> {
     this.state = {time: new Date(), passed: 0};
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     this.timerID = setInterval(
       () => this.tick(this.state.passed),
       1000
     );
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     clearInterval(this.timerID);
   }
 
-  tick(t: number) {
+  tick(t: number): void {
     this.setState({
       time: new Date(),
       passed: t + 1
+    });
+  }
+
+  public reset(): void {
+    this.setState({
+      passed: 0
     });
   }
 
@@ -38,7 +44,8 @@ export class Hello extends React.Component<HelloProps, HelloState> {
     return <h1>
       Hello from {this.props.title}!<br/>
       {this.state.time.toLocaleTimeString()}<br/>
-      Here from {this.state.passed} seconds
+      Here from {this.state.passed} seconds<br/>
+      <span onClick={this.reset.bind(this)}>reset</span>
     </h1>;
   }
 }
