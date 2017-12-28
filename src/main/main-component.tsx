@@ -13,7 +13,7 @@ export class MainComponent extends React.Component<MainComponentProps, MainCompo
     super(props);
   }
 
-  render() {
+  public render() {
     return <div>
       <Hello title="React!"/>
       <FormComponent/>
