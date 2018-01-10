@@ -8,9 +8,16 @@ src/
         home/
             home.component
             home.scss
-            search/
-                search.component
-                search.scss
+        search/
+            search.component
+            search.scss
+        result/
+            result-list/
+                result-list.component
+                result-list.scss
+            result-item/
+                result-item.component
+                result-item.scss
         shared/
             header/
                 header.component
@@ -21,4 +28,6 @@ src/
         core/ -> services
     assets/
         img/
+    data/
+        data.json
 ```
