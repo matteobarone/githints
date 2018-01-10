@@ -6,7 +6,7 @@ const extractCSS = new ExtractTextPlugin({
 });
 
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: "./src/app/app.bootstrap.tsx",
   output: {
     filename: "bundle.js",
     path: __dirname + "/dist"
